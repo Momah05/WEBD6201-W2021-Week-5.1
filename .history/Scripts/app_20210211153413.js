@@ -196,7 +196,7 @@
       contact.EmailAddress = $("#emailAddress").val();
 
       // Add the contact info to local storage
-      localStorage.setItem(key, contact.serialize());
+      localStorage.setItem(key, contact.serialize9());
       
       // Return to the contact list
       location.href = "contact-list.html";

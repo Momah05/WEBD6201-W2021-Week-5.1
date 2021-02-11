@@ -163,47 +163,21 @@
 
   function displayEdit() 
   {
-    // Get they key from the hash
     let key = location.hash.substring(1);
 
-    // Make a new contact as a container for what i am editing.
     let contact = new core.Contact();
 
     // Checking to ensure they key is not empty
     if(key != "")
     {
-      // Deserialize if key is not empty and get contact info
       contact.deserialize(localStorage.getItem(key));
 
-      // Display contact info in the form
       $("#fullName").val(contact.FullName);
       $("#contactNumber").val(contact.ContactNumber);
       $("#emailAddress").val(contact.EmailAddress);
     }
 
-    $("#editButton").on("click", function(){
-      // Check to see if key is empty
-      if(key == "")
-      {
-        // if empty create a new key
-        key = contact.FullName.substring(0, 1) + Date.now();
-
-      }
-
-      // Copy contact info from form into contact object
-      contact.FullName = $("#fullName").val();
-      contact.ContactNumber = $("#contactNumber").val();
-      contact.EmailAddress = $("#emailAddress").val();
-
-      // Add the contact info to local storage
-      localStorage.setItem(key, contact.serialize());
-      
-      // Return to the contact list
-      location.href = "contact-list.html";
-
-    });
-
-    $("#cancelButton").on("click", function(){
+    $("cancelButton").on("click", function(){
       location.href = "contact-list.html";
     });
   }
